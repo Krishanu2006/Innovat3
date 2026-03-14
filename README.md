@@ -31,17 +31,12 @@ No backend, no database – just smart contracts and the decentralized web.
 9.Progress bar for each campaign
 10.Fully typed with TypeScript
 
-**Tech Stack**
- --------------------------------------------------
-| **Layer** |           **Technology**             |
- --------------------------------------------------
-| Blockchain|  Solidity, Hardhat, Sepolia Testnet  |
- --------------------------------------------------
-|  Frontend |       React, Typescript, Vite        |
- --------------------------------------------------
-|   Web3    |          ether.js, Metamask          |
- --------------------------------------------------
-|  Storage  |           IPFS (via Pinata)          |
- --------------------------------------------------
-|   Tools   |           npm, Git, VS Code          |
- --------------------------------------------------
+## 🛠️ Tech Stack
+
+| Layer          | Technology                         |
+|----------------|------------------------------------|
+| ⛓️ Blockchain  | Solidity, Hardhat, Sepolia Testnet |
+| 🖥️ Frontend    | React, TypeScript, Vite            |
+| 🌐 Web3        | ethers.js, MetaMask                |
+| 📦 Storage     | IPFS (via Pinata)                  |
+| 🧰 Tools       | npm, Git, VS Code                  |
