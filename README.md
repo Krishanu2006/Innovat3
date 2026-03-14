@@ -1,5 +1,5 @@
-## Web3 Donation Tracker
-A decentralized, transparent donation platform built on Ethereum (Sepolia testnet) that records every donation on the blockchain and stores proof of fund usage on IPFS. No more wondering where your money went – everything is publicly verifiable.
+## ProofOfGiving
+Donate with confidence. Every contribution is stored on-chain, and charities upload tamper-proof proof of fund usage to IPFS. Complete transparency for a better world.
 
 ## The Problem
 Charity donations often lack transparency. Donors give money but have no way to verify:

@@ -1,50 +1,52 @@
-import { useState } from 'react'
-import { ethers } from 'ethers'
-import { getContract } from '../blockchain/contract'
+import { useState } from 'react';
+import { ethers } from 'ethers';
+import { getContract } from '../blockchain/contract';
 
-interface Props {
-  campaignId: number
-  onDonateSuccess: () => void
+interface DonateButtonProps {
+  campaignId: number;
+  onDonateSuccess: () => void;
 }
 
-const DonateButton = ({ campaignId, onDonateSuccess }: Props) => {
-  const [amount, setAmount] = useState('')
-  const [loading, setLoading] = useState(false)
+const DonateButton = ({ campaignId, onDonateSuccess }: DonateButtonProps) => {
+  const [amount, setAmount] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleDonate = async () => {
-    if (!amount) return alert('Enter amount')
-    setLoading(true)
+    if (!amount) return alert('Enter amount');
+    setLoading(true);
     try {
-      const contract = await getContract()
-      const tx = await contract.donate(campaignId, {
-        value: ethers.parseEther(amount)
-      })
-      await tx.wait()
-      alert('Donation successful!')
-      setAmount('')
-      onDonateSuccess() // refresh parent data
-    } catch (error: any) {
-      console.error(error)
-      alert(error.message || 'Donation failed')
+      const contract = await getContract();
+      const tx = await contract.donate(campaignId, { value: ethers.parseEther(amount) });
+      await tx.wait();
+      alert('Donation successful!');
+      setAmount('');
+      onDonateSuccess();
+    } catch (error) {
+      console.error(error);
+      alert('Donation failed');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div style={{ marginTop: '1rem' }}>
+    <div className="flex space-x-2">
       <input
         type="text"
-        placeholder="Amount in ETH"
+        placeholder="Amount (ETH)"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        disabled={loading}
+        className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
       />
-      <button onClick={handleDonate} disabled={loading}>
-        {loading ? 'Donating...' : 'Donate'}
+      <button
+        onClick={handleDonate}
+        disabled={loading}
+        className="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50"
+      >
+        {loading ? '...' : 'Donate'}
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default DonateButton
+export default DonateButton;
