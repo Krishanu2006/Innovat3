@@ -1,14 +1,14 @@
-**Web3 Donation Tracker**
+## Web3 Donation Tracker
 A decentralized, transparent donation platform built on Ethereum (Sepolia testnet) that records every donation on the blockchain and stores proof of fund usage on IPFS. No more wondering where your money went – everything is publicly verifiable.
 
-**The Problem**
+## The Problem
 Charity donations often lack transparency. Donors give money but have no way to verify:
 How much was actually raised?
 Was the money used for the intended purpose?
 Who donated what and when?
 Traditional systems rely on trust in a central authority. This project replaces trust with code and cryptography.
 
-**Our Solution**
+## Our Solution
 A fully decentralized donation tracker where:
 Anyone can create a campaign (set a name, description, and fundraising target).
 Anyone can donate ETH to any campaign.
@@ -19,7 +19,7 @@ A public transparency ledger shows all donations with donor addresses, amounts, 
 A live dashboard displays total campaigns, total donations, and total ETH raised.
 No backend, no database – just smart contracts and the decentralized web.
 
-**Features**
+## Features
 1.MetaMask wallet connection
 2.Create fundraising campaigns
 3.Donate ETH (any amount > 0)
