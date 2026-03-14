@@ -10,9 +10,10 @@ interface Donation {
 
 interface Props {
   campaignId: number
+  proofHash?: string // optional IPFS proof hash of the campaign
 }
 
-const DonationList = ({ campaignId }: Props) => {
+const DonationList = ({ campaignId, proofHash }: Props) => {
   const [donations, setDonations] = useState<Donation[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -148,9 +149,9 @@ const DonationList = ({ campaignId }: Props) => {
           padding: 12px 16px;
           display: grid;
           grid-template-columns: 1fr auto;
-          grid-template-rows: auto auto;
+          grid-template-rows: auto auto auto;
           gap: 4px 12px;
-          align-items: center;
+          align-items: start;
           transition: border-color 0.2s, background 0.2s;
         }
 
@@ -191,6 +192,25 @@ const DonationList = ({ campaignId }: Props) => {
           color: rgba(34,211,165,0.6);
           font-weight: 400;
           margin-left: 3px;
+        }
+
+        .dl-proof-link {
+          grid-column: 1 / 3;
+          grid-row: 3;
+          font-family: 'Space Mono', monospace;
+          font-size: 10px;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          color: #3dd9ff;
+          text-decoration: none;
+          margin-top: 4px;
+          padding-top: 4px;
+          border-top: 1px dashed rgba(61,217,255,0.2);
+        }
+
+        .dl-proof-link:hover {
+          color: #7ae8ff;
         }
 
         .dl-index {
@@ -241,6 +261,28 @@ const DonationList = ({ campaignId }: Props) => {
                   {ethers.formatEther(d.amount)}
                   <span className="dl-amount-unit">ETH</span>
                 </div>
+                {/* Proof link – shown for every donation if campaign has proof */}
+                {proofHash && (
+                  <a
+                    className="dl-proof-link"
+                    href={`https://gateway.pinata.cloud/ipfs/${proofHash}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span style={{ fontSize: '0.75rem' }}>📄</span>
+                    <span style={{ fontSize: '0.7rem' }}>View proof of fund usage</span>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
               </li>
             ))}
           </ul>

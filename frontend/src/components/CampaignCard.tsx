@@ -388,7 +388,7 @@ const CampaignCard = ({ campaign }: { campaign: Campaign }) => {
               style={{ overflow: 'hidden' }}
             >
               <div className="cc-donations-panel">
-                <DonationList campaignId={campaign.id} />
+                <DonationList campaignId={campaign.id} proofHash={campaign.proofHash} />
               </div>
             </motion.div>
           )}

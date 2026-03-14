@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const { account } = useWeb3()
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS2
 
   return (
     <>
@@ -86,6 +87,18 @@ const Navbar = () => {
           0%,100% { opacity:1 }
           50% { opacity:0.3 }
         }
+
+        .nav-external-link-icon {
+          width: 12px;
+          height: 12px;
+          margin-left: 4px;
+          opacity: 0.7;
+          transition: opacity 0.2s;
+        }
+
+        .nav-link:hover .nav-external-link-icon {
+          opacity: 1;
+        }
       `}</style>
 
       <nav className="nav-root">
@@ -99,10 +112,38 @@ const Navbar = () => {
           {/* Right side */}
           <div className="nav-links">
 
-            <Link to="/" className="nav-link">
+            {/* Dashboard link */}
+            <Link to="/dashboard" className="nav-link">
               Dashboard
             </Link>
 
+            {/* Contract link (Etherscan) */}
+            {contractAddress && (
+              <a
+                href={`https://sepolia.etherscan.io/address/${contractAddress}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link"
+              >
+                Contract
+                <svg
+                  className="nav-external-link-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            )}
+
+            {/* Wallet display */}
             {account && (
               <div className="nav-wallet">
                 <span className="nav-dot" />
