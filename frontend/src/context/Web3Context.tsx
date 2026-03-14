@@ -36,7 +36,7 @@ export const Web3Provider: React.FC<{ children: React.ReactNode }> = ({ children
       setAccount(accounts[0]);
       const contractInstance = await getContract();
       setContract(contractInstance);
-      // Optionally switch to Sepolia
+      await fetchCampaigns(); 
       const network = await provider.getNetwork();
       if (network.chainId !== 11155111n) {
         alert('Please switch to Sepolia network');
@@ -82,8 +82,8 @@ export const Web3Provider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
-    if (contract) fetchCampaigns();
-  }, [contract]);
+    if (account & contract) fetchCampaigns();
+  }, [account,contract]);
 
   return (
     <Web3Context.Provider value={{ account, connectWallet, contract, campaigns, loading, totalDonations, totalEthRaised, campaignCount, fetchCampaigns }}>
