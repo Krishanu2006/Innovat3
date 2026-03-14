@@ -82,7 +82,7 @@ export const Web3Provider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
-    if (account & contract) fetchCampaigns();
+    if (account && contract) fetchCampaigns();
   }, [account,contract]);
 
   return (
