@@ -971,18 +971,6 @@ const Landing = () => {
           </div>
 
         </div>
-
-        {/* Scroll chevron */}
-        <motion.div
-          className="pg-scroll-hint"
-          animate={{ y: [0, 7, 0] }}
-          transition={{ repeat: Infinity, duration: 2.2 }}
-        >
-          <svg width="18" height="11" viewBox="0 0 18 11" fill="none">
-            <path d="M1 1l8 8 8-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M1 5.5l8 4.5 8-4.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.35"/>
-          </svg>
-        </motion.div>
       </div>
     </>
   );
