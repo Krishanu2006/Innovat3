@@ -10,7 +10,6 @@ interface DonateButtonProps {
 const DonateButton = ({ campaignId, onDonateSuccess }: DonateButtonProps) => {
   const [amount, setAmount] = useState('');
   const [loading, setLoading] = useState(false);
-  const [focused, setFocused] = useState(false);
 
   const handleDonate = async () => {
     if (!amount) return alert('Enter amount');
