@@ -36,7 +36,17 @@ const DonateButton = ({ campaignId, onDonateSuccess }: DonateButtonProps) => {
         placeholder="Amount (ETH)"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="flex-1 px-3 py-2 rounded-md bg-gray-100 border border-green-300 text-green-800 placeholder-green-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+        style={{
+          flex: 1,
+          padding: '0.5rem 0.75rem',
+          borderRadius: '0.375rem',
+          border: '1px solid #86efac', // green-300
+          backgroundColor: '#f3f4f6',   // gray-100
+          color: '#166534',             // green-800
+          outline: 'none',
+        }}
+        onFocus={(e) => e.currentTarget.style.borderColor = '#22c55e'} // green-500
+        onBlur={(e) => e.currentTarget.style.borderColor = '#86efac'}
       />
       <button
         onClick={handleDonate}
