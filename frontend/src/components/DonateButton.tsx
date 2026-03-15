@@ -36,7 +36,7 @@ const DonateButton = ({ campaignId, onDonateSuccess }: DonateButtonProps) => {
         placeholder="Amount (ETH)"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="flex-1 px-3 py-2 rounded-md bg-[rgba(61,217,255,0.04)] border border-[rgba(61,217,255,0.18)] text-[#e8f4fb] placeholder-[#7ba4bb] focus:outline-none focus:border-[rgba(61,217,255,0.45)]"
+        className="flex-1 px-3 py-2 rounded-md bg-[rgba(61,217,255,0.04)] border border-[rgba(61,217,255,0.18)] text-[#414242] placeholder-[#7ba4bb] focus:outline-none focus:border-[rgba(61,217,255,0.45)]"
       />
       <button
         onClick={handleDonate}
